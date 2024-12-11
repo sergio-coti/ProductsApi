@@ -48,15 +48,12 @@ jobs:
                 java-version: "21"
                 distribution: "temurin"
 
-          - name: Executar os testes do Maven
-            run: mvn test
+          - name: Executar testes com Maven
+            run: mvn test surefire-report:report
 
-          - name: Gerar relatório de testes
-            run: mvn surefire-report:report
-
-          - name: Verificar arquivos no diretório site
+          - name: Listar arquivos do diretório target/site
             run: ls -la target/site
-
+    
           - name: Upload do relatório de testes
             uses: actions/upload-artifact@v4
             with:
