@@ -11,7 +11,7 @@ on:
 jobs:
     build:
        name: Compilação do projeto Spring Boot
-       runs-on: ubuntu-latest
+       runs-on: ubuntu-22.04
        steps:
           - name: Checkout do código
             uses: actions/checkout@v2
@@ -29,14 +29,14 @@ jobs:
             run: ls -la target
 
           - name: Gerando o arquivo JAR compilado do projeto
-            uses: actions/upload-artifact@v3
+            uses: actions/upload-artifact@v4
             with:
                 name: jar-file
                 path: target/*.jar
 
     test:
        name: Executar os testes do projeto
-       runs-on: ubuntu-latest
+       runs-on: ubuntu-22.04
        needs: build
        steps:
           - name: Checkout do código
@@ -51,13 +51,14 @@ jobs:
           - name: Executar os testes do Maven
             run: mvn test
 
-          # Gerar relatório HTML de testes
           - name: Gerar relatório de testes
             run: mvn surefire-report:report
 
-          # Fazer o upload do relatório gerado para o GitHub
+          - name: Verificar arquivos no diretório site
+            run: ls -la target/site
+
           - name: Upload do relatório de testes
-            uses: actions/upload-artifact@v3
+            uses: actions/upload-artifact@v4
             with:
                 name: test-reports
                 path: target/site/surefire-report.html
