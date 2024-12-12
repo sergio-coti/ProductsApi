@@ -38,7 +38,7 @@ jobs:
 
           #Upload dos arquivos
           - name: Gerando o arquivo JAR compilado do projeto
-            uses: actions/upload-artifact@v3
+            uses: actions/upload-artifact@v4
             with:
                 name: jar-file
                 path: target/*.jar 
