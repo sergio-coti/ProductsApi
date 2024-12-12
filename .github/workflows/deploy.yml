@@ -10,7 +10,7 @@ on:
 
 jobs:
     build:
-       name: Compilação do projeto Spring Boot
+       name: Compilação do projeto
        runs-on: ubuntu-22.04
        steps:
           - name: Checkout do código
