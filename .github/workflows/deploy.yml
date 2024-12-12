@@ -15,7 +15,7 @@ jobs:
 
     build: #compilação do projeto
        name: Compilação do projeto Spring Boot
-       runs-on: ubuntu-latest #Servidor linux
+       runs-on: ubuntu-22.04 #Servidor linux
        steps:
           #Checkout do código
           - name: Checkout do código
@@ -45,7 +45,7 @@ jobs:
 
     test: #teste do projeto
        name: Execução dos testes
-       runs-on: ubuntu-latest #Servidor linux
+       runs-on: ubuntu-22.04 #Servidor linux
        needs: build #etapa do teste é executada após o build
        steps:
           #Checkout do código
