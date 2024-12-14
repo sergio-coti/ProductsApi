@@ -21,7 +21,7 @@ public class CategoriaController {
 	public ResponseEntity<List<CategoriaResponseDto>> getAll() {
 		
 		var result = categoriaService.consultar();
-		
+		//TODO
 		return ResponseEntity.status(200).body(result);
 	}
 }
